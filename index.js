@@ -48,6 +48,7 @@ myLibrary.forEach(() => {
 const form = document.querySelector('form')
 const tbody = document.querySelector('tbody')
 const table = document.querySelector('table')
+const readStatus = document.querySelector('.readC')
 
 function onAddBook(e) {
     e.preventDefault();
@@ -57,14 +58,38 @@ function onAddBook(e) {
     const read = document.getElementById('read').value;
 
     tbody.innerHTML += `
-        <tr>
-            <td>${title}</td>
-            <td>${author}</td>
-            <td>${pages}</td>
-            <td>${read}</td>
-            <td><button class='deleteBtn'>x</button></td>
-        </tr>
+         <tbody>
+            <tr>
+                <td>${title}</td>
+                <td>${author}</td>
+                <td>${pages}</td>
+                <td class="readCE">${read}</td>
+                <td><button class='deleteBtn'>x</button></td>
+            </tr>
+        </tbody>
     `;
+
+    function addBookToLibrary(title, author, pages, read) {
+        const book = new Book(
+            this.title = title,
+            this.author = author,
+            this.pages = pages,
+            this.read = read
+        )
+        return myLibrary.unshift(book)
+    }
+    addBookToLibrary(title, author, pages, read)
+
+    const newReadStatus = document.querySelector('.readCE')
+
+    function newSwitchStatus() {
+        if (newReadStatus.textContent === 'No') {
+            newReadStatus.textContent = 'Yes'
+        } else {
+            newReadStatus.textContent = 'No'
+        }
+    }
+    newReadStatus.addEventListener('click', newSwitchStatus);
 }
 
 function onDeleteBook(e) {
@@ -73,7 +98,19 @@ function onDeleteBook(e) {
     }
     const btn = e.target;
     btn.closest('tr').remove();
+    myLibrary.pop()
+}
+
+function switchStatus() {
+    if (readStatus.textContent === 'No') {
+        readStatus.textContent = 'Yes'
+    } else {
+        readStatus.textContent = 'No'
+    }
 }
 
 form.addEventListener('submit', onAddBook);
 table.addEventListener('click', onDeleteBook);
+readStatus.addEventListener('click', switchStatus);
+
+
