@@ -11,19 +11,52 @@
     <script defer src="index.js"></script>
 </head>
 <body>
+
+    <form action="#" method="post">
+        <div class="addNewBook">
+            <div class="titleInput">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title">
+            </div>
+            <div class="authorInput">
+                <label for="author">Author</label>
+                <input type="text" id="author" name="author">
+            </div>
+            <div class="pagesInput">
+                <label for="pages">Pages</label>
+                <input type="number" id="pages" name="pages">
+            </div>
+            <div class="readInput">
+                <label for="read">Read</label>
+                <input type="text" id="read" name="read">
+            </div>
+            <div class="submit">
+                <button type="submit">Submit</button>
+            </div>
+
+        </div>
+    </form>
+    <br>
     <h1>Book Collection:</h1>
-    <table>
+    <table class="bookshelf">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Pages</th>
+                <th>Read</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
         <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Pages</th>
-            <th>Read</th>
-        </tr>
-        <tr>
-            <td class="title">Title</td>
-            <td class="author">Author</td>
-            <td class="pages">Pages</td>
-            <td class="read">Read</td>
+            <td class="titleC"></td>
+            <td class="authorC"></td>
+            <td class="pagesC"></td>
+            <td class="readC"></td>
+            <td class="removeC"><button class="deleteBtn">x</button></td>
         </tr>
     </table>
 </body>

@@ -25,3 +25,20 @@ td {
     text-align: center;
     font-weight: 100;
 }
+
+.addNewBook {
+    display: flex;
+    width: 50vw;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 50px;
+}
+
+.addNewBook div{
+    display: flex;
+    flex-direction: column;
+}
+
+.deleteBtn {
+    margin: 2px;
+}

@@ -21,24 +21,59 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 //Example of adding book object
-addBookToLibrary('The Alchemist', 'Paulo Coelho', 400, 'False')
-addBookToLibrary('Harry Potter', 'J.K. Rowling', 650, 'True')
-addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 1000, 'False')
-addBookToLibrary('Atomic Habits', 'James Clear', 300, 'False')
+addBookToLibrary('Atomic Habits', 'James Clear', 300, 'No')
 console.log(myLibrary)
 
 //Connect myLibrary array to table
-const bookTitle = document.querySelector('.title')
-const bookAuthor = document.querySelector('.author')
-const bookPages = document.querySelector('.pages')
-const bookRead = document.querySelector('.read')
+const bookshelf = document.querySelector('.bookshelf')
+const bookTitle = document.querySelector('.titleC')
+const bookAuthor = document.querySelector('.authorC')
+const bookPages = document.querySelector('.pagesC')
+const bookRead = document.querySelector('.readC')
 
 myLibrary.forEach(() => {
-    for (i=0; 1<myLibrary.length; i++) {
+    
+    for (i=0; i<myLibrary.length; i++) {
+        bookshelf.insertRow()
         bookTitle.textContent = myLibrary[i].title
         bookAuthor.textContent = myLibrary[i].author
         bookPages.textContent = myLibrary[i].pages
         bookRead.textContent = myLibrary[i].read
+        document.body.appendChild(bookshelf)
     }
     
 });
+
+//New approach to dynamically create the table
+const form = document.querySelector('form')
+const tbody = document.querySelector('tbody')
+const table = document.querySelector('table')
+
+function onAddBook(e) {
+    e.preventDefault();
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = document.getElementById('pages').value;
+    const read = document.getElementById('read').value;
+
+    tbody.innerHTML += `
+        <tr>
+            <td>${title}</td>
+            <td>${author}</td>
+            <td>${pages}</td>
+            <td>${read}</td>
+            <td><button class='deleteBtn'>x</button></td>
+        </tr>
+    `;
+}
+
+function onDeleteBook(e) {
+    if (!e.target.classList.contains('deleteBtn')) {
+        return;
+    }
+    const btn = e.target;
+    btn.closest('tr').remove();
+}
+
+form.addEventListener('submit', onAddBook);
+table.addEventListener('click', onDeleteBook);
