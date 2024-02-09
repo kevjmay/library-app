@@ -42,3 +42,15 @@ td {
 .deleteBtn {
     margin: 2px;
 }
+
+input {
+    gap: 2px;
+}
+
+input:valid {
+    border: 1px solid green;
+}
+
+input:invalid {
+    border: 1px solid red;
+}
